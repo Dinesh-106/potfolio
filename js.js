@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -10,7 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // You can add more interactive JavaScript here if needed,
-    // for example, a mobile navigation toggle, animations on scroll, etc.
     console.log("Portfolio loaded!");
+});
+
+const toggleBtn = document.getElementById("theme-toggle");
+const body = document.body;
+
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-theme");
+    toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+        toggleBtn.textContent = "☀️"; 
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleBtn.textContent = "🌙"; 
+        localStorage.setItem("theme", "light");
+    }
 });
